@@ -1,0 +1,218 @@
+{
+  "profile": {
+    "name": "Samrawit Yirga",
+    "title": "Full Stack Developer",
+    "bio": "Hi, I'm Samrawit Yirga, a third-year Computer Science student and a passionate Full Stack Developer. I specialize in building modern web applications using React and Node.js, focusing on clean code, performance, and scalability. I enjoy turning ideas into real-world products and solving practical problems through technology. I am continuously learning new tools, frameworks, and best practices to improve my development skills and stay updated in the fast-evolving tech industry. My goal is to become a highly skilled developer who builds impactful and scalable applications.",
+    "image": "",
+    "email": "samrawityirga08@gmail.com",
+    "location": "Ethiopia",
+    "socialLinks": {
+      "github": "https://github.com/samri0821",
+      "linkedin": "https://www.linkedin.com/in/samrawit-yirga-05ab353a9",
+      "twitter": ""
+    }
+  },
+  "projects": [
+    {
+      "id": "saferoute-001",
+      "title": "SafeRoute Emergency System",
+      "description": "SafeRoute is a full-stack emergency safety platform that monitors users in real time during travel and automatically triggers emergency alerts when danger is detected. It ensures fast response through GPS tracking, SMS alerts, and a central monitoring system.",
+      "technologies": [
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Socket.io",
+        "Tailwind CSS",
+        "Google Maps API",
+        "Twilio SMS API"
+      ],
+      "demoUrl": "",
+      "githubUrl": "https://github.com/samri0821/saferoute",
+      "image": "",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    },
+    {
+      "id": "portfolio-002",
+      "title": "Full Stack Portfolio System",
+      "description": "A comprehensive portfolio management system with React frontend, Node.js backend, and MongoDB database. Includes admin dashboard, contact system with email notifications, and real-time features.",
+      "technologies": [
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Mongoose",
+        "JWT Authentication",
+        "Nodemailer",
+        "Tailwind CSS"
+      ],
+      "demoUrl": "",
+      "githubUrl": "https://github.com/samri0821/portfolio",
+      "image": "",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    }
+  ],
+  "skills": [
+    {
+      "id": "frontend-001",
+      "name": "React.js",
+      "category": "Frontend",
+      "proficiency": "Advanced",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    },
+    {
+      "id": "frontend-002",
+      "name": "HTML & CSS",
+      "category": "Frontend",
+      "proficiency": "Advanced",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    },
+    {
+      "id": "frontend-003",
+      "name": "Tailwind CSS",
+      "category": "Frontend",
+      "proficiency": "Advanced",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    },
+    {
+      "id": "frontend-004",
+      "name": "JavaScript",
+      "category": "Frontend",
+      "proficiency": "Advanced",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    },
+    {
+      "id": "backend-001",
+      "name": "Node.js",
+      "category": "Backend",
+      "proficiency": "Advanced",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    },
+    {
+      "id": "backend-002",
+      "name": "Express.js",
+      "category": "Backend",
+      "proficiency": "Advanced",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    },
+    {
+      "id": "database-001",
+      "name": "MongoDB",
+      "category": "Database",
+      "proficiency": "Intermediate",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    },
+    {
+      "id": "database-002",
+      "name": "Mongoose",
+      "category": "Database",
+      "proficiency": "Intermediate",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    },
+    {
+      "id": "tools-001",
+      "name": "Git & GitHub",
+      "category": "Tools",
+      "proficiency": "Advanced",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    },
+    {
+      "id": "tools-002",
+      "name": "VS Code",
+      "category": "Tools",
+      "proficiency": "Advanced",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    },
+    {
+      "id": "tools-003",
+      "name": "REST API Design",
+      "category": "Tools",
+      "proficiency": "Advanced",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    },
+    {
+      "id": "tools-004",
+      "name": "JWT Authentication",
+      "category": "Tools",
+      "proficiency": "Intermediate",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    },
+    {
+      "id": "tools-005",
+      "name": "Socket.io",
+      "category": "Tools",
+      "proficiency": "Intermediate",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    },
+    {
+      "id": "tools-006",
+      "name": "Nodemailer",
+      "category": "Tools",
+      "proficiency": "Intermediate",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    },
+    {
+      "id": "lang-001",
+      "name": "C++",
+      "category": "Other",
+      "proficiency": "Intermediate",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    },
+    {
+      "id": "lang-002",
+      "name": "JavaFX",
+      "category": "Other",
+      "proficiency": "Intermediate",
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    }
+  ],
+  "experience": [
+    {
+      "id": "exp-001",
+      "title": "Full Stack Developer",
+      "company": "SafeRoute Project",
+      "location": "Ethiopia",
+      "type": "Full-time",
+      "startDate": "2024-01",
+      "endDate": "",
+      "description": "Leading development of SafeRoute Emergency System, a full-stack platform for real-time safety monitoring and emergency response coordination.",
+      "achievements": [
+        "Designed and implemented real-time GPS tracking system with Socket.io",
+        "Built emergency alert system with SMS notifications via Twilio",
+        "Created responsive React frontend with Google Maps integration",
+        "Implemented MongoDB database for user and emergency data management",
+        "Developed subscription-based payment system"
+      ],
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    },
+    {
+      "id": "exp-002",
+      "title": "Full Stack Developer",
+      "company": "Portfolio System Development",
+      "location": "Ethiopia",
+      "type": "Freelance",
+      "startDate": "2023-06",
+      "endDate": "2023-12",
+      "description": "Developed comprehensive portfolio management system with admin dashboard and contact functionality.",
+      "achievements": [
+        "Built React frontend with Tailwind CSS for responsive design",
+        "Created RESTful API with Node.js and Express.js",
+        "Implemented JWT authentication and security features",
+        "Integrated email notifications with Nodemailer",
+        "Designed MongoDB schema for efficient data storage"
+      ],
+      "createdAt": "2026-05-06T00:00:00.000Z"
+    }
+  ],
+  "messages": [
+    {
+      "id": "1879e9a2-72e9-4bf7-81f7-b3e460a7ceae",
+      "name": "samri",
+      "email": "shomronityirga@gmail.com",
+      "subject": "about the project",
+      "message": "what is the safe route work",
+      "createdAt": "2026-05-03T08:39:29.379Z",
+      "read": false
+    }
+  ]
+}

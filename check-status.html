@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Status Check</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .status-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #ddd;
+        }
+        .status-item.running {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+        .status-item.error {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+        .status-item.checking {
+            border-left-color: #ffc107;
+            background: #fff3cd;
+        }
+        .icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        .result {
+            font-weight: 600;
+        }
+        .running .result { color: #28a745; }
+        .error .result { color: #dc3545; }
+        .checking .result { color: #ffc107; }
+        
+        .actions {
+            margin-top: 30px;
+            padding: 20px;
+            background: #e9ecef;
+            border-radius: 10px;
+        }
+        .actions h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .action-step {
+            display: flex;
+            align-items: flex-start;
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+        .step-num {
+            background: #667eea;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid #ffc107;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Portfolio Website Status Check</h1>
+        
+        <div id="status-list">
+            <div class="status-item checking" id="backend-check">
+                <span><span class="icon">🖥️</span> Backend Server (Port 5000)</span>
+                <span class="result">Checking...<span class="spinner" style="display:inline-block;vertical-align:middle;margin-left:10px;"></span></span>
+            </div>
+            <div class="status-item checking" id="frontend-check">
+                <span><span class="icon">🌐</span> Frontend Client (Port 3001)</span>
+                <span class="result">Checking...<span class="spinner" style="display:inline-block;vertical-align:middle;margin-left:10px;"></span></span>
+            </div>
+            <div class="status-item checking" id="database-check">
+                <span><span class="icon">💾</span> Database Connection</span>
+                <span class="result">Checking...<span class="spinner" style="display:inline-block;vertical-align:middle;margin-left:10px;"></span></span>
+            </div>
+        </div>
+
+        <div id="actions" class="actions hidden">
+            <h2>⚠️ How to Fix This:</h2>
+            <div id="action-list"></div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="http://localhost:3001" class="btn hidden" id="open-site">Open Website 🚀</a>
+            <button class="btn" onclick="location.reload()" id="recheck-btn">Check Again 🔄</button>
+        </div>
+    </div>
+
+    <script>
+        async function checkStatus() {
+            // Check Backend
+            try {
+                const response = await fetch('http://localhost:5000/api/profile', {
+                    method: 'GET',
+                    mode: 'cors',
+                    cache: 'no-cache'
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    updateStatus('backend-check', 'running', `✅ Running (Hello ${data.name || 'User'}!)`);
+                } else {
+                    updateStatus('backend-check', 'error', '❌ Not Responding');
+                }
+            } catch (e) {
+                updateStatus('backend-check', 'error', '❌ Not Running');
+            }
+
+            // Check Frontend
+            try {
+                const response = await fetch('http://localhost:3001', {
+                    method: 'HEAD',
+                    mode: 'no-cors',
+                    cache: 'no-cache'
+                });
+                updateStatus('frontend-check', 'running', '✅ Running');
+            } catch (e) {
+                updateStatus('frontend-check', 'error', '❌ Not Running');
+            }
+
+            // Check Database via Backend
+            try {
+                const response = await fetch('http://localhost:5000/api/projects', {
+                    method: 'GET',
+                    mode: 'cors',
+                    cache: 'no-cache'
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    updateStatus('database-check', 'running', `✅ Connected (${data.length} projects)`);
+                } else {
+                    updateStatus('database-check', 'error', '❌ Error');
+                }
+            } catch (e) {
+                updateStatus('database-check', 'error', '❌ Cannot Connect');
+            }
+
+            showActions();
+        }
+
+        function updateStatus(id, status, message) {
+            const el = document.getElementById(id);
+            el.className = 'status-item ' + status;
+            el.querySelector('.result').textContent = message;
+        }
+
+        function showActions() {
+            const backendEl = document.getElementById('backend-check');
+            const frontendEl = document.getElementById('frontend-check');
+            
+            const backendRunning = backendEl.classList.contains('running');
+            const frontendRunning = frontendEl.classList.contains('running');
+            
+            const actionsDiv = document.getElementById('actions');
+            const actionList = document.getElementById('action-list');
+            const openBtn = document.getElementById('open-site');
+            const recheckBtn = document.getElementById('recheck-btn');
+            
+            if (backendRunning && frontendRunning) {
+                // Everything is working!
+                actionsDiv.classList.add('hidden');
+                openBtn.classList.remove('hidden');
+                recheckBtn.textContent = 'Check Again 🔄';
+            } else {
+                // Show fix instructions
+                actionsDiv.classList.remove('hidden');
+                openBtn.classList.add('hidden');
+                recheckBtn.textContent = 'I Fixed It - Check Again ✅';
+                
+                let html = '';
+                
+                if (!backendRunning) {
+                    html += `
+                        <div class="action-step">
+                            <span class="step-num">1</span>
+                            <div>
+                                <strong>Start Backend Server:</strong><br>
+                                Open terminal → <code>cd server</code> → <code>npm start</code><br>
+                                <small style="color:#666;">You should see "Server running on port 5000"</small>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                if (!frontendRunning) {
+                    html += `
+                        <div class="action-step">
+                            <span class="step-num">${backendRunning ? '1' : '2'}</span>
+                            <div>
+                                <strong>Start Frontend Client:</strong><br>
+                                Open new terminal → <code>cd client</code> → <code>npm run dev</code><br>
+                                <small style="color:#666;">You should see "Local: http://localhost:3001"</small>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                html += `
+                    <div class="action-step">
+                        <span class="step-num">${(!backendRunning && !frontendRunning) ? '3' : '2'}</span>
+                        <div>
+                            <strong>Still not working?</strong><br>
+                            • Make sure ports 5000 and 3001 are not blocked<br>
+                            • Check that <code>node_modules</code> exist (run <code>npm install</code> if missing)<br>
+                            • Check terminal for error messages
+                        </div>
+                    </div>
+                `;
+                
+                actionList.innerHTML = html;
+            }
+        }
+
+        // Run check on load
+        checkStatus();
+    </script>
+</body>
+</html>
