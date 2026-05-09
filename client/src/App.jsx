@@ -8,7 +8,8 @@ import Skills from './pages/Skills'
 import Experience from './pages/Experience'
 import Contact from './pages/Contact'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+const API_URL =
+  import.meta.env.VITE_API_URL || 'https://portfolio-backend-v4b1.onrender.com/api'
 
 // Theme Context for Dark Mode
 const ThemeContext = createContext()

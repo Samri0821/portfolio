@@ -4,7 +4,8 @@ import axios from 'axios'
 import { ExternalLink, Github, Calendar, Star, Award, Target, Zap, Code, Globe, Database, Lock, Mail, Users, User, Shield, Clock, Smartphone, Map as MapIcon, Rocket, Brain, MessageSquare, ShoppingCart, MapPin, AlertTriangle, Briefcase } from 'lucide-react'
 import { useTheme } from '../App'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+const API_URL =
+  import.meta.env.VITE_API_URL || 'https://portfolio-backend-v4b1.onrender.com/api'
 
 // Static data for deployment
 const staticProjects = [

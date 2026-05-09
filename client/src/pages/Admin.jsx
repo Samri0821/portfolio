@@ -8,7 +8,8 @@ import {
   MapPin, Github, Linkedin, Twitter
 } from 'lucide-react'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+const API_URL =
+  import.meta.env.VITE_API_URL || 'https://portfolio-backend-v4b1.onrender.com/api'
 
 // Toast notification component
 function Toast({ message, type, onClose }) {

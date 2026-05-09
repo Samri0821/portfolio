@@ -3,7 +3,8 @@ import axios from 'axios'
 import { Code, Globe, Database, Lock, Mail as MailIcon, Award, Target, Zap, Star, TrendingUp, Users, Shield, Clock, Smartphone, Map as MapIcon, Cloud, Brain } from 'lucide-react'
 import { useTheme } from '../App'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+const API_URL =
+  import.meta.env.VITE_API_URL || 'https://portfolio-backend-v4b1.onrender.com/api'
 
 // Static data for deployment
 const staticSkills = {
